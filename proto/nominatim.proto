@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package main;
+
+message NominatimResponseItem{
+  int32 PlaceID = 1;
+  string Licence = 2;
+  string OsmType = 3;
+  int32 OsmID = 4;
+
+  message BoundingboxArray{
+    string name = 1;
+  }
+  repeated BoundingboxArray Boundingbox = 5;
+  string Lat = 6;
+  string Lon = 7;
+  string DisplayName = 8;
+  string Class = 9;
+  string Type = 10;
+  string Importance  = 11;
+  string Icon = 12;
+}
+
+message ListNominatimResponse{
+  repeated NominatimResponseItem nominatimresponse = 1;
+}
+
+message QueryString{
+  string query = 1;
+}
+
+
+service NominatimService{
+  rpc List(QueryString) returns (ListNominatimResponse);
+}
+

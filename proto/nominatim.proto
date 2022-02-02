@@ -1,6 +1,8 @@
 syntax = "proto3";
 
-package main;
+package proto;
+
+option go_package = "nominatim/";
 
 message NominatimResponseItem{
   int32 PlaceID = 1;
